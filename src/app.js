@@ -16,6 +16,7 @@ const verifyJWTToken = require("./utils/verifyJWTToken");
 const HomeRoute = require("./routes/HomeRoute");
 const CompanyRoute = require("./routes/CompanyRoute");
 const AuthRoute = require("./routes/AuthRoute");
+const UserRoute = require("./routes/UserRoute");
 
 
 // @@ create app routes
@@ -50,10 +51,14 @@ routes.use(HomeRoute)
 routes.use("/api/v1",CompanyRoute)
 routes.use("/api/v1",AuthRoute)
 
+
 // @@ auth routes
+routes.use("/api/v1",verifyJWTToken,UserRoute)
+
 routes.use("/api/v1/verify",verifyJWTToken,(req,res,next)=>{
   res.send("verify with token success");
 });
+ 
 
 routes.use("/api/v1/unverify",(req,res,next)=>{
   res.send("unverified url");

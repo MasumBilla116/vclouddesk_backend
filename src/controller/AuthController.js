@@ -15,6 +15,11 @@ const generateValidPhoneNumber = require("../utils/generateValidPhoneNumber");
 class AuthController {
   constructor() {}
 
+
+  async getCompanyWiseUser(req,res,next){
+
+  }
+
   async register(req, res, next) {
     const session = await AuthModel.startSession();
     session.startTransaction();
@@ -104,7 +109,7 @@ class AuthController {
     const tokenPayload = {
       email: userResponse.email,
       phone: userResponse.phone,
-      company_id: userResponse.company_id,
+      company_id: userResponse.company,
       user_id: userResponse._id,
     };
     const token = await generateJWT(tokenPayload);
@@ -116,7 +121,7 @@ class AuthController {
       phone: userResponse.phone,
       role: userResponse.role,
       status: "online",
-      company_id: userResponse.company_id,
+      company_id: userResponse.company,
       user_id: userResponse._id,
       permission: {},
       avater: "",

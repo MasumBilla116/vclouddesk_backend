@@ -13,7 +13,7 @@ function verifyJWTToken(req,res,next){
     
     jwt.verify(token,process.env.JWT_TOKEN_SECRET_KEY,function(error,decode){
         if(error) return errorResponse(res,"Invalid Token",403,"Authorization token is invalid");
-        res.user = decode;
+        req.user = decode;
         next();
     });        
 }
