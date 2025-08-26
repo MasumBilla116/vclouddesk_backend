@@ -45,12 +45,6 @@ routes.use(urlAccessLimiter);
 // @@ Hide express version
 routes.disable("x-powered-by");
 
-
-
-
-
-
-
  // @@ start routes section
 routes.use(HomeRoute)
 routes.use("/api/v1",CompanyRoute)
@@ -61,20 +55,14 @@ routes.use("/api/v1/verify",verifyJWTToken,(req,res,next)=>{
   res.send("verify with token success");
 });
 
-
 routes.use("/api/v1/unverify",(req,res,next)=>{
   res.send("unverified url");
 });
-
- 
-
 
 // @@ error
 routes.use((req,res,next)=>{
     res.send("404");
 })
-
-
 
 
 // @@ Server
