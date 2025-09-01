@@ -106,11 +106,15 @@ class AuthController {
     }
 
     // @@ generate token
-    const tokenPayload = {
+    const tokenPayload = { 
+      name: userResponse.name,
       email: userResponse.email,
       phone: userResponse.phone,
+      role: userResponse.role,
+      status: "online",
       company_id: userResponse.company,
       user_id: userResponse._id,
+      avater: "",
     };
     const token = await generateJWT(tokenPayload);
 
@@ -125,7 +129,7 @@ class AuthController {
       user_id: userResponse._id,
       permission: {},
       avater: "",
-    };
+    }; 
 
     const responseData = {
       token,

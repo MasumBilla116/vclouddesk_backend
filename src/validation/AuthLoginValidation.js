@@ -10,8 +10,7 @@ const AuthLoginValidation = [
     body("password")
     .trim()
     .notEmpty()
-    .withMessage("Password is required")
-    .bail()
+    .withMessage("Password is required") 
     .isLength({min:6})
     .withMessage("Password is minium 6 charecters")
 ];
